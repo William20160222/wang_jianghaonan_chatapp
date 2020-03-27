@@ -11,7 +11,7 @@ This project use tNode.js, Socket.io and Vue.js, make sure to instal the package
 # Installation:
 
 1.Clone the repo git clone
-
+https://github.com/William20160222/wang_jianghaonan_chatapp.git
 
 # Usage:
 
