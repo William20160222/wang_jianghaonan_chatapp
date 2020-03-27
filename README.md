@@ -26,4 +26,4 @@ Design & Development: Jianghaonan Wang
 
 # License:
 
-This project is licensed under the MIT License - see the LICENSE file for details
+This project is licensed under the MIT License（more detail please check the LICENSE file)
