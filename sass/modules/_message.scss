@@ -1,0 +1,21 @@
+
+.new-message { 
+    span { font-size: 1rem; display: block; margin-bottom: 2px;text-align: left;font-weight: bold;color: blue;}
+
+    width: 70%;
+    padding: 8px 12px;
+    background-color: white; 
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    text-align: left;
+
+    float:left;
+    clear: both;
+}
+
+.my-message {
+    span{color:green;}
+    float: right !important;
+    background-color: #86bf9d;
+    color: white;
+}

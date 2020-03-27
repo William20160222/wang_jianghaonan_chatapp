@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Socket IO Chat with Node!</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="https://unpkg.com/vue"></script>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <main id="app">
+      <section class="user" v-if="!loginDialog">
+        <h2>User List</h2>
+        <ul v-for="(nickname,index) in nicknameList" :key="nickname">
+          <li>
+            <img
+              src="https://source.unsplash.com/user/erondu"
+              width="35"
+              height="35"
+              alt=""
+            />
+            {{ nickname}}
+          </li>
+        </ul>
+      </section>
+
+      <section class="chat" v-if="!loginDialog">
+        <section class="id-info">
+          <img src="https://source.unsplash.com/random" />
+          <div>
+            <h2>Chat Window</h2>
+            <p>
+              This is a group chat channel for IDP students to discuss projects.
+            </p>
+          </div>
+        </section>
+
+        <section class="notification">
+          <p v-for="(notice,index) in notification" :key="index">{{notice}}</p>
+        </section>
+
+        <section class="messages">
+          <ul id="messages">
+            <!-- render a new message component for every message -->
+            <newmessage
+              v-for="(message,index) in messages"
+              :key="index"
+              :msg="message"
+            ></newmessage>
+          </ul>
+        </section>
+
+        <section class="form-container">
+          <form>
+            <div class="action-icon">
+              <a href="#"><i class="fas fa-font"></i></a>
+              <a href="#"><i class="far fa-smile-beam"></i></a>
+              <a href="#"><i class="fas fa-cut"></i></a>
+              <a href="#"><i class="fas fa-microphone"></i></a>
+              <a href="#"><i class="fas fa-image"></i></a>
+              <a href="#"><i class="fas fa-video"></i></a>
+            </div>
+            <textarea
+              v-model="message"
+              class="message"
+              type="text"
+              autocomplete="off"
+              id="textarea"
+              placeholder="Something to say here"
+            ></textarea>
+            <input type="submit" @click.prevent="dispatchMessage" />
+          </form>
+        </section>
+      </section>
+
+      <div class="login" v-if="loginDialog">
+        <h1>Log In</h1>
+        <label for="nickname">Nickname:</label>
+        <input
+          v-model="nickname"
+          type="text"
+          class="nickname"
+          placeholder="What is your nickname?"
+          required
+        />
+        <label for="username">Username:</label>
+        <input
+          v-model="username"
+          type="text"
+          class="username"
+          placeholder="Username"
+          required
+        />
+        <label for="password">Password:</label>
+        <input
+          v-model="password"
+          type="password"
+          class="password"
+          placeholder="Password"
+          required
+        />
+        <input type="submit" @click.prevent="dispatchNikename" />
+      </div>
+    </main>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="module" src="js/main_vm.js"></script>
+  </body>
+</html>
